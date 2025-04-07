@@ -1,93 +1,162 @@
 # A/B Test Reports
 
-A modern web application for creating, viewing, and exporting A/B test reports with a polished Material Design interface.
+A modern web application for managing and analyzing A/B tests, built with React, TypeScript, and Material UI.
 
 ## Features
 
-- 📊 Create and manage A/B test reports
-- 🎨 Modern Material UI design with Google's brand colors
-- 📱 Responsive layout for all devices
-- 📈 Rich data visualization with charts
-- 📄 PDF export functionality
-- 🔄 Support for both manual and integrated data entry
-- 🎯 Target audience segmentation
-- 📊 Traffic split configuration
-- 📅 Date range selection
-- 📝 Detailed test documentation
+- **Dashboard**: View all A/B tests in a grid layout
+- **New Test Creation**: Comprehensive form for setting up tests
+- **Test Details**: View and analyze test results
+- **Responsive Design**: Works on all device sizes
+- **Modern UI**: Material Design with Google's brand colors
 
-## Tech Stack
+## Technical Stack
 
-- React 18
-- TypeScript
-- Material UI
-- React Router
-- Recharts for data visualization
-- React PDF for report exports
-- Date-fns for date handling
-- Vite for development and building
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18 or higher
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/abtestreport.git
-   cd abtestreport
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to `http://localhost:5173`
-
-### Building for Production
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-The build output will be in the `dist` directory.
+- **Frontend**: React 18 + TypeScript
+- **UI Library**: Material UI (MUI)
+- **Routing**: React Router
+- **Date Handling**: date-fns
+- **Build Tool**: Vite
 
 ## Project Structure
 
 ```
 src/
-  ├── components/     # Reusable UI components
-  ├── pages/         # Page components
-  ├── theme/         # Material UI theme configuration
-  ├── types/         # TypeScript type definitions
-  ├── utils/         # Utility functions
-  ├── hooks/         # Custom React hooks
-  ├── assets/        # Static assets
-  ├── App.tsx        # Main app component
-  └── main.tsx       # Application entry point
+├── components/     # Reusable UI components
+├── pages/         # Main application pages
+├── theme/         # Material UI theme configuration
+├── types/         # TypeScript type definitions
+├── App.tsx        # Main application component
+└── main.tsx       # Application entry point
 ```
+
+## Key Components
+
+### 1. Layout (`Layout.tsx`)
+
+- Top navigation bar
+- "New Test" button
+- Responsive container
+- Consistent styling
+
+### 2. Dashboard (`Dashboard.tsx`)
+
+- Grid layout of test cards
+- Each card shows:
+  - Test name and description
+  - Status (Active/Completed)
+  - Date range
+  - Target audience
+  - Traffic split
+  - Quick actions
+
+### 3. New Test Form (`NewTest.tsx`)
+
+- Multi-section form:
+  - Basic Information
+  - Date Range
+  - Data Source
+  - Target Audience
+  - Traffic Split
+  - Variant Details
+
+## Data Structure
+
+```typescript
+interface ABTest {
+  id: string;
+  name: string;
+  description: string;
+  startDate: Date;
+  endDate: Date;
+  testUrl: string;
+  dataSource: "manual" | "integration";
+  targetAudience: string[];
+  trafficSplit: {
+    variantA: number;
+    variantB: number;
+  };
+  variants: {
+    A: Variant;
+    B: Variant;
+  };
+  results?: {
+    variantA: TestResults;
+    variantB: TestResults;
+  };
+}
+```
+
+## Getting Started
+
+1. **Prerequisites**
+
+   - Node.js (v14 or higher)
+   - npm or yarn
+
+2. **Installation**
+
+   ```bash
+   # Clone the repository
+   git clone [repository-url]
+
+   # Install dependencies
+   npm install
+
+   # Start development server
+   npm run dev
+   ```
+
+3. **Building for Production**
+   ```bash
+   npm run build
+   ```
+
+## Usage
+
+1. **Creating a New Test**
+
+   - Click "New Test" in the top navigation
+   - Fill in test details
+   - Configure variants
+   - Set traffic split
+   - Save the test
+
+2. **Viewing Tests**
+
+   - Dashboard shows all tests
+   - Click on a test to view details
+   - Use quick actions for common tasks
+
+3. **Analyzing Results**
+   - View test metrics
+   - Compare variant performance
+   - Export reports
+
+## Development
+
+- **TypeScript**: For type safety
+- **ESLint**: For code quality
+- **Vite**: For fast development
+- **Hot Module Replacement**: For instant updates
+
+## Future Enhancements
+
+- PDF export functionality
+- Advanced analytics visualization
+- Test result comparison
+- User authentication
+- API integration
+- Test scheduling
+- Automated reporting
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
 

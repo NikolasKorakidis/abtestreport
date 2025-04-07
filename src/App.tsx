@@ -6,6 +6,7 @@ import { theme } from './theme/theme';
 import { Layout } from './components/Layout';
 import { Dashboard } from './pages/Dashboard';
 import { NewTest } from './pages/NewTest';
+import { ReportView } from './pages/ReportView';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/new" element={<NewTest />} />
+            <Route path="/report/:id" element={<ReportView />} />
           </Routes>
         </Layout>
       </Router>
